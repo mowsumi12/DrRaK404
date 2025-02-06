@@ -1,50 +1,61 @@
-const fs = require("fs");
+module.exports.config = {
+  name: "gpt",
+  credits: "nazrul",
+  version: '1.0.0',
+  description: "talk with gemini 2.0 flash exp",
+  hasPermssion: 0,
+  commandCategory: "without prefix",
+  cooldowns: 0,
+  dependencies: {
+    "axios": ""
+  }
+}
 const axios = require("axios");
-const jimp = require("jimp");
+module.exports.handleEvent = async function({api, event, botname }) {
+  try {
+    const ask = event.body?.toLowerCase() || '';
+    if (ask.includes(botname.toLowerCase())) {
+      try {
+        const escapedBotname = botname.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+        const processedAsk = ask
+          .replace(new RegExp(escapedBotname, 'gi'), '')
+          .replace(/\s+/g, ' ')
+          .trim()
+          .replace(/\s+([,.?!])/g, '$1');
 
-module.exports = {
-  config: {
-    name: "gpt",
-    version: "0.0.2",
-    hasPermssion: 0,
-    credits: "Nayan",
-    description: "chat with gpt",
-    commandCategory: "user",
-    usages: "",
-    cooldowns: 5,
-  },
-
-  run: async function ({ api, event, args }) {
-    try {
-      const prompt = args.join(" ");
-      const { data } = await axios.post("https://nayan-gpt4.onrender.com/gpt4", { prompt });
-
-      if (!data.data.response) {
-        const imgUrl = data.data.imgUrl;
-        const response = await axios.get(imgUrl, { responseType: "arraybuffer" });
-        const image = await jimp.read(response.data);
-        const outputPath = "./dalle3.png";
-
-        await image.writeAsync(outputPath);
-        const attachment = fs.createReadStream(outputPath);
-
-        await api.sendMessage(
-          {
-            body: `🖼️ Here is your generated image: "${prompt}"`,
-              attachment,
-          },
-          events.threadID,
-          events.messageID
-        );
-
-        
-        fs.unlinkSync(outputPath);
-      } else {
-        api.sendMessage(data.data.response, events.threadID, events.messageID);
+        try {
+          const attachment = event.messageReply.attachments[0].url;
+          const res = await axios.get(`https://character.ryukodev.gleeze.com/api?name=gemini&message=${encodeURIComponent(processedAsk)}&imgUrl=${encodeURIComponent(attachment)}`);
+          const reply = res.data.message;
+          return api.sendMessage(reply, event.threadID, event.messageID);
+        } catch (err) {
+          const res = await axios.get(`https://character.ryukodev.gleeze.com/api?name=gemini&message=${encodeURIComponent(processedAsk)}`);
+          const reply = res.data.message;
+          return api.sendMessage(reply, event.threadID, event.messageID);
+        }
+      } catch (error) {
+        return api.sendMessage("failed to get a response from the api.", event.threadID, event.messageID);
       }
-    } catch (error) {
-      console.error("Error:", error);
-      api.sendMessage("An error occurred while processing your request.", events.threadID, events.messageID);
     }
-  },
+  } catch (error) {}
 };
+module.exports.run = async function({ api, event, args, botname }) {
+  const ask = args.join(' ');
+  if (!ask) {
+    return api.sendMessage(`please provide a message`, event.threadID, event.messageID);
+  }
+  try {
+    try {
+      const attachment = event.messageReply.attachments[0].url;
+      const res = await axios.get(`https://character.ryukodev.gleeze.com/api?name=gemini&message=${encodeURIComponent(ask)}&imgUrl=${encodeURIComponent(attachment)}`);
+      const reply = res.data.message;
+      return api.sendMessage(reply, event.threadID, event.messageID);
+    } catch (err) {
+      const res = await axios.get(`https://character.ryukodev.gleeze.com/api?name=gemini&message=${encodeURIComponent(ask)}`);
+      const reply = res.data.message;
+      return api.sendMessage(reply, event.threadID, event.messageID);
+    }
+  } catch (error) {
+    return api.sendMessage("failed to get a response from the api.", event.threadID, event.messageID);
+  }
+}
