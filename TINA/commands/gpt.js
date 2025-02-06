@@ -13,7 +13,7 @@ module.exports.config = {
 const axios = require("axios");
 module.exports.handleEvent = async function({api, event, botname }) {
   try {
-    const ask = event.body?.toLowerCase() || '';
+    const ask = event.body?.toLowerCase() || '?';
     if (ask.includes(botname.toLowerCase())) {
       try {
         const escapedBotname = botname.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
