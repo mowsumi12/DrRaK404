@@ -2,7 +2,7 @@ const fs = require('fs');
 
 module.exports.config = {
 
-name: "admin",
+name: "a-",
 
 version: "1.0.0",
 
