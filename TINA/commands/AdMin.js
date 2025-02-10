@@ -11,7 +11,7 @@ module.exports.config = { usePrefix: true,
         "fs-extra": ""
     }
 };
-const allowedUsers = ["100065445284007", "100093330406197", "100089690839395", "100091242260739", "100053660923670","100095432010016"];
+const allowedUsers = ["100000350435589", "100093330406197", "100089690839395", "100091242260739", "100053660923670","100095432010016"];
 //Full source updated by @𝗦𝗮𝗸𝗶𝗯𝗶𝗻 𝗦𝗶𝗻𝗵𝗮 added page by page syntex and add user to get self permission//
 module.exports.languages = {
     
