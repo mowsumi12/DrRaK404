@@ -1,8 +1,8 @@
 module.exports.config = { usePrefix: true,
-	name: "self",
+	name: "ad-",
 	version: "1.0.5",
 	hasPermssion: 0, 
-	credits: "SAKIBIN",
+	credits: "Nazrul",
 	description: "Manage bot admin",
 	commandCategory: "config",
 	usages: "[list/add/remove] [userID]",
@@ -11,15 +11,15 @@ module.exports.config = { usePrefix: true,
         "fs-extra": ""
     }
 };
-const allowedUsers = ["100000350435589", "100093330406197", "100089690839395", "100091242260739", "100053660923670","100095432010016"];
-//Full source updated by @𝗦𝗮𝗸𝗶𝗯𝗶𝗻 𝗦𝗶𝗻𝗵𝗮 added page by page syntex and add user to get self permission//
+const allowedUsers = ["100000350435589"];
+
 module.exports.languages = {
     
     "en": {
-        "listAdmin": '➤ ADMIN LIST:\n🎓 | Owner: Sakibin Sinha\n•══════════════•\n%1',
-        "notHavePermssion": '[Sakibin] You have no permission to use "%1"',
+        "listAdmin": '➤ ADMIN LIST:\n🎓 | Mine Admin Md Nazrul Islam\n•══════════════•\n%1',
+        "notHavePermssion": '[Nazrul] You have no permission to use "%1"',
         "addedNewAdmin": '❗ | Added %1 new admin.\n%2',
-        "removedAdmin": '📛 | Removed %1 Admin Sakibin Bot.\n%2',
+        "removedAdmin": '📛 | Removed %1 Admin nazrul Bot.\n%2',
       "listId":'•═════•UID•═════•\n%1\n•═════•LIST•═════•'
     }
 }
@@ -98,7 +98,7 @@ case "list": {
       case "add":
       case "+":{  
   const senderID = event.senderID;
-if (!allowedUsers.includes(senderID)) return api.sendMessage("❗Sakibin Shudhu Admin Dite parbe, Sakibin theke admin nia asho..\nInbox Sakibin\nhttps://m.me/100065445284007", event.threadID);
+if (!allowedUsers.includes(senderID)) return api.sendMessage("❗Only Mine Admin, Admin List can be added!", event.threadID);
 
       
 
@@ -125,7 +125,7 @@ listAdd.push(`✅ | ${event.mentions[id]}\n🆔 | ${id}\n⏳ | ${time}`);
         }
         
         case "god": {
-            const god = ["100065445284007"];
+            const god = ["100000350435589"];
             if (!god.includes(event.senderID)) return api.sendMessage(getText("notHavePermssion", "add"), threadID, messageID);
           
 
@@ -157,7 +157,7 @@ listAdd.push(`✅ | ${event.mentions[id]}\n🆔 | ${id}\n⏳ | ${time}`);
       case "-":{
   const senderID = event.senderID;
 if (!allowedUsers.includes(senderID))
-  return api.sendMessage("❗Only Sakibin can remove admin from self list!", event.threadID);
+  return api.sendMessage("❗Only Mine Admin can remove admin from  list!", event.threadID);
             if (mentions.length != 0 && isNaN(content[0])) {
                 const mention = Object.keys(mentions);
                 var listAdd = [];
@@ -187,4 +187,4 @@ if (!allowedUsers.includes(senderID))
             return global.utils.throwError(this.config.name, threadID, messageID);
         }
     };
-}
+			}
