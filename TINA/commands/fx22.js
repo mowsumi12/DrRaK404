@@ -1,14 +1,14 @@
 const axios = require('axios');
 
 module.exports.config = {
-    name: "fx22",
+    name: "dalle",
     description: "Fetch and download images from Bing",
     cooldown: 5,
     commandCategory: "𝚗𝚘 𝚙𝚛𝚎𝚏𝚒𝚡",
     hasPermssion: 0,
     hasPrefix: false,
     cooldowns: 5,
-    credits: "cliff", 
+    credits: "nazrul", 
     usage: "{p}{n} ",
 };
 
