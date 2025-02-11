@@ -5,7 +5,7 @@ module.exports.config = {
   name: "hd",
   version: "4.4",
   hasPermssion: 0,
-  credits: "Hazeyy",
+  credits: "nazrul",
   description: "( 𝚄𝚙𝚜𝚌𝚊𝚕𝚎 )",
   commandCategory: "𝚗𝚘 𝚙𝚛𝚎𝚏𝚒𝚡",
   usages: "( 𝚂𝚌𝚊𝚕𝚒𝚗𝚐 𝙸𝚖𝚊𝚐𝚎𝚜 )",
