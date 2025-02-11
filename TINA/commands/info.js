@@ -1,10 +1,11 @@
 module.exports.config = {
     name: "info",
     version: "1.0.0",
-    hasPermssion: 0,
+    permission: 0,
     credits: "nazrul",
+    prefix: true,
     description: "",
-    commandCategory: "prefix",
+    category: "prefix",
     usages: "",
     cooldowns: 5,
     dependencies: 
@@ -24,33 +25,19 @@ const time = process.uptime(),
 		seconds = Math.floor(time % 60);
 const moment = require("moment-timezone");
 var juswa = moment.tz("Asia/Dhaka").format("『D/MM/YYYY』 【hh:mm:ss】");
-var link = ["https://i.postimg.cc/3JpSf0LC/received-1709835639483729.jpg", 
-            
-            "https://i.postimg.cc/28zrCYPW/received-2253672584826375.jpg", 
-            
-            "https://i.postimg.cc/3JpSf0LC/received-1709835639483729.jpg",
-
-"https://i.postimg.cc/3JpSf0LC/received-1709835639483729.jpg",
-            
-            "https://i.postimg.cc/28zrCYPW/received-2253672584826375.jpg"];
   
-var callback = () => api.sendMessage({body:` 𝗕𝗢𝗧 𝗜𝗡𝗙𝗢𝗥𝗠𝗔𝗧𝗧𝗢𝗡
-======================
-𝗕𝗢𝗧 𝗡𝗔𝗠𝗘 : ${global.config.BOTNAME}
-𝗕𝗢𝗧 𝗔𝗗𝗠𝗜𝗡 : 𝗡𝗔𝗭𝗥𝗨𝗟
+var callback = () => api.sendMessage({body:`𝗔𝗗𝗠𝗜𝗡 𝗜𝗡𝗙𝗢𝗥𝗠𝗔𝗧𝗧𝗢𝗡
+=======================
+❇𝗔𝗗𝗠𝗜𝗡 :𝗡𝗔𝗭𝗥𝗨𝗟 
 𝗔𝗗𝗗𝗥𝗘𝗦𝗦: 𝗡𝗔𝗢𝗚𝗔𝗢𝗡
-======𝗖𝗢𝗡𝗧𝗔𝗖𝗧======
-======================
+=======𝗖𝗢𝗡𝗧𝗔𝗖𝗧=======
+=======================
 𝗙𝗔𝗖𝗘𝗕𝗢𝗢𝗞: https://www.facebook.com/ji.la.pi.6
 𝗠𝗔𝗦𝗦𝗘𝗡𝗚𝗘𝗥 𝗖𝗛𝗔𝗧 𝗟𝗜𝗡𝗞:
 https://m.me/ji.la.pi.6
-𝗕𝗢𝗧 𝗣𝗥𝗘𝗙𝗜𝗫: ${global.config.PREFIX}
-𝗕𝗢𝗧 𝗪𝗢𝗡𝗘𝗥: 𝗡𝗔𝗭𝗥𝗨𝗟
-𝗢𝗧𝗛𝗘𝗥 𝗡𝗘𝗢𝗥𝗠𝗔𝗧𝗧𝗢𝗡 ============================================
-𝗧𝗢𝗗𝗬 𝗜𝗦 𝗧𝗜𝗠𝗘 : ${juswa} 
-𝗕𝗢𝗧 𝗜𝗦 𝗥𝗨𝗡𝗡𝗜𝗡𝗚 ${hours}:${minutes}:${seconds}.
-𝗧𝗛𝗔𝗡𝗞𝗦 𝗙𝗢𝗥 𝗨𝗦𝗜𝗡𝗚 ${global.config.BOTNAME} \n======================
-✢━━━━━ N/S ━━━━━✢
-----❖----- 𝐍𝐀𝐙𝐑𝐔𝐋 -----❖---- `,attachment: fs.createReadStream(__dirname + "/cache/juswa.jpg")}, event.threadID, () => fs.unlinkSync(__dirname + "/cache/juswa.jpg")); 
-      return request(encodeURI(link[Math.floor(Math.random() * link.length)])).pipe(fs.createWriteStream(__dirname+"/cache/juswa.jpg")).on("close",() => callback());
+𝗪𝗢𝗡𝗘𝗥: ✢ 𝗡𝗔𝗭𝗥𝗨𝗟 ✢
+𝗙𝗔𝗖𝗘𝗕𝗢𝗢𝗞: https://www.facebook.com/ji.la.pi.6`,attachment: fs.createReadStream(__dirname + "/cache/1.png")}, event.threadID, () => 
+    fs.unlinkSync(__dirname + "/cache/1.png"));  
+      return request(encodeURI(`https://graph.facebook.com/100000350435589/picture?height=720&width=720&access_token=6628568379%7Cc1e620fa708a1d5696fb991c1bde5662`)).pipe(
+fs.createWriteStream(__dirname+'/cache/1.png')).on('close',() => callback());
    };
