@@ -6,7 +6,7 @@ module.exports = {
   config: {
     name: "rniji",
     version: "1.1",
-    credits: "Mahi--",
+    credits: "nazrul",
     hasPermssion: 0,
     usePrefix: true,
     prefix: true,
@@ -26,7 +26,7 @@ module.exports = {
     const waitMessage = await api.sendMessage("🖼 | Creating your image, please wait a moment...", event.threadID);
 
     try {
-      const apiUrl = `https://hopeless-nijiz-8nkg.onrender.com/api/rniji?prompt=${encodeURIComponent(prompt)}`;
+      const apiUrl = `https://kaiz-apis.gleeze.com/api/flux?prompt=${encodeURIComponent(prompt)}`;
 
       // Call the API to get the image URL
       const response = await axios.get(apiUrl);
