@@ -52,11 +52,11 @@ module.exports = {
   config: {
     name: "sd",
     version: "1.0.0",
-    permission: 0,
+    hasPermssion: 0,
     credits: "Nayan",
     description: "Example command to download song from YouTube",
     prefix: true,
-    category: "Media",
+    commandCategory: "Media",
     usages: "song [YouTube URL|search keyword]",
     cooldowns: 5,
     dependencies: {
